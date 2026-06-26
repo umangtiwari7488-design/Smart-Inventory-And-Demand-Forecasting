@@ -18,7 +18,7 @@ const Sales = () => {
     fetchData();
 
     const connection = new signalR.HubConnectionBuilder()
-      .withUrl("http://localhost:5194/inventoryHub")
+      .withUrl("https://smart-inventory-and-demand-forecasting.onrender.com/inventoryHub")
       .withAutomaticReconnect()
       .build();
 
@@ -33,8 +33,8 @@ const Sales = () => {
 
   const fetchData = async () => {
     try {
-      const pRes = await axios.get('http://localhost:5194/api/products');
-      const sRes = await axios.get('http://localhost:5194/api/sales');
+      const pRes = await axios.get('https://smart-inventory-and-demand-forecasting.onrender.com/api/products');
+      const sRes = await axios.get('https://smart-inventory-and-demand-forecasting.onrender.com/api/sales');
       setProducts(pRes.data);
       setSales(sRes.data);
       setLoading(false);
@@ -61,7 +61,7 @@ const Sales = () => {
     }
 
     try {
-      await axios.post('http://localhost:5194/api/sales', {
+      await axios.post('https://smart-inventory-and-demand-forecasting.onrender.com/api/sales', {
         productId: parseInt(selectedProductId),
         quantitySold: parseInt(quantity)
       });
